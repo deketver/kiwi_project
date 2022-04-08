@@ -24,9 +24,13 @@ import os.path
 
 # zkusit vysortovat vysledky dle nejvyssih poctu navstivenych letist a zkonstrlovat :)
 
+#pridat departure_after, arival_after, number of results for each direction do you wish to show?
+#main priority - time traveled, price? - default is price
+#max number of results shown
+
 def process_inputs(argv):
     """Function to read inputs from command line"""
-    print(argv)
+
     regex_airport = r"^[A-Z]{3}$"
     regex_bags = r"bags="
     regex_return = r"return"
@@ -66,16 +70,6 @@ def process_inputs(argv):
             print("Possible arguments: source_file origin destination --bags=1 --return")
             print("origin and destination are airports in format AAA YYY")
             exit(0)
-
-    # regex_airport = r"^[A-Z]{3}"
-    # if re.search(regex_airport, argv[1]) is not None:
-    #    start = argv[1]
-    # else:
-    #    raise Exception("Departure airport not given in correct format.")
-    # if re.search(regex_airport, argv[2]) is not None:
-    #    final_destination = argv[2]
-    # else:
-    #    raise Exception("Arrival airport not given in correct format.")
 
     return source_file, start, final_destination, bags, return_trip
 
@@ -191,16 +185,6 @@ class FlightDatabase:
         else:
             print("Origin not found in table")
             exit(0)
-
-    @staticmethod
-    def convert_time_utc():
-
-        time_now_string = datetime.now().replace(microsecond=0).isoformat()
-        print(time_now_string)
-        print(datetime.fromisoformat(time_now_string))  # from string to iso format datetime
-        iso_time = datetime.fromisoformat(time_now_string)
-        final_time = iso_time + timedelta(hours=2)
-        print(final_time)
 
 
 class Node:
@@ -347,7 +331,7 @@ class Graph:
 
     def test_results_exist(self):
         if len(self.list_of_last_nodes) < 1:
-            print("No results for search combination found")
+            print("No results found for given search combination")
             exit(0)
 
     def print_whole_line(self, node, best_results=False):
@@ -398,7 +382,10 @@ def main(argv):
     # print(argv)
     source_file, start, final_destination, bags, return_trip = process_inputs(argv)
     if test_file(source_file):
-        print("file found, bags: ", bags, "return trip: ", return_trip)
+        print("File found, Searched combination:\nOrigin: {0}, Destination: {1}, Bags: {2}, Return trip: {3}".format(start,
+                                                                                                                   final_destination,
+                                                                                                                   bags,
+                                                                                                                   return_trip))
         new_search = FlightSearch(source_file, start, final_destination, bags, return_trip)
         # new_search.open_source_file()
         columns = new_search.read_first_line()
