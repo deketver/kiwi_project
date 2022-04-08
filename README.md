@@ -1,4 +1,4 @@
-#KIWI Flight Search Solution
+# KIWI Flight Search Solution
 
 List of compulsory arguments:
 - source_file
