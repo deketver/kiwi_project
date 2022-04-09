@@ -35,7 +35,7 @@ def process_inputs(argv):
 
     regex_airport = r"^[A-Z]{3}$"
     regex_bags = r"bags="
-    regex_return = r"return"
+    regex_return = r"return$"
     regex_max_airport = r"max_airports="
     regex_departure_after = r"departure_after="
     regex_return_after = r"return_after="
@@ -71,7 +71,7 @@ def process_inputs(argv):
             try:
                 bags = int(item.split("=")[1])
             except:
-                print("Number of bags given is not integer, bags are set to 0.\n Correct format is e: --bags=1")
+                print("Number of bags given is not integer, bags are set to 0.\n Correct format is e: --bags=1\n")
                 bags = 0
         elif re.search(regex_return, item) is not None:
             return_trip = True
@@ -80,29 +80,29 @@ def process_inputs(argv):
                 max_airports = int(item.split("=")[1])
             except:
                 print(
-                    "Number of maximum airports visited given is not integer,set to default 7.\n Correct format is e: --maximum_airports=7")
+                    "Number of maximum airports visited given is not integer,set to default 7.\n Correct format is e: --maximum_airports=7\n")
         elif re.search(regex_departure_after, item) is not None:
-            date_format = r"^[0-9]{4}-[0-9]{2}-[0-9]{2}"
+            date_format = r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
             given_date = item.split("=")[1]
             if re.search(date_format, given_date) is not None:
                 departure_after = given_date
             else:
                 print(
-                    "Departure after date was not in expected format --departure_after=YYYY-MM-DD, set to default None")
+                    "Departure after date was not in expected format --departure_after=YYYY-MM-DD, set to default None\n")
         elif re.search(regex_return_after, item) is not None:
-            date_format = r"^[0-9]{4}-[0-9]{2}-[0-9]{2}"
+            date_format = r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
             given_date = item.split("=")[1]
             if re.search(date_format, given_date) is not None:
                 return_after = given_date
             else:
-                print("Return after date was not in expected format --return_after=YYYY-MM-DD, set to default None")
+                print("Return after date was not in expected format --return_after=YYYY-MM-DD, set to default None\n")
 
         elif re.search(regex_results_limit, item) is not None:
             try:
                 result_limit = int(item.split("=")[1])
             except:
                 print(
-                    "Results limit given is not integer,set to default None.\n Correct format is e: --results_limit=10")
+                    "Results limit given is not integer,set to default None.\n Correct format is e: --results_limit=10\n")
 
         else:
             print("Argument ", item, "was not identified.")
@@ -231,7 +231,6 @@ class Node:
         self.data = data
         self.parent = parent
         self.ended_node = False
-        self.arrived_destination = False  # possible not needed
         self.current_price = 0
         self.origin = origin
         self.destination = ""
@@ -272,13 +271,10 @@ class Node:
                                                                  self.bags_allowed,
                                                                  self.bag_price))
 
-    def return_parent(self):
-        return self.parent
-
 
 class Graph:
-    def __init__(self, origin, destination, number_of_bags, data_table, max_number_airports=7, results_limit=None,
-                 search_after=None, return_after=None):
+    def __init__(self, origin, destination, number_of_bags, data_table, max_number_airports=7, search_after=None,
+                 results_limit=None):
         self.first_node = Node(None, None, origin)
         self.list_of_nodes = [self.first_node]  # maybe not neede?
         self.list_of_last_nodes = []
@@ -292,9 +288,8 @@ class Graph:
         self.best_solution_time = None
         self.best_price = 0
         self.line_max_bags = 0
+        self.search_after_date = search_after
         self.results_limit = results_limit
-        self.search_after_date = search_after,
-        self.return_after = return_after
 
     def add_node(self, node):
         self.list_of_nodes.append(node)
@@ -308,7 +303,7 @@ class Graph:
             node = Node(searched_results[i], parent, origin)
             node.assign_data_node()
             # node.print_node_data()
-            self.list_of_nodes.append(node)
+            self.add_node(node)
             if node.bags_allowed < self.bags_required:
                 node.ended_node = True
                 self.list_of_ended_nodes.append(node)
@@ -324,7 +319,12 @@ class Graph:
                 node.ended_node = True
                 self.list_of_ended_nodes.append(node)
                 continue
-            if node.number_of_predecessor >= self.max_number_airports:
+            if node.number_of_predecessor > self.max_number_airports:
+                node.ended_node = True
+                self.list_of_ended_nodes.append(node)
+                continue
+            if self.search_after_date and datetime.fromisoformat(node.departure_time) < datetime.fromisoformat(
+                    self.search_after_date):
                 node.ended_node = True
                 self.list_of_ended_nodes.append(node)
                 continue
@@ -341,7 +341,6 @@ class Graph:
                 # zde musim rozestringovat pripadne prijezdove datum, pricist k nemu hodinu a porovnat s aktualni node departure casem
             node.current_price = parent.current_price + self.bags_required * node.bag_price + node.base_price
             if node.destination == self.destination and node.ended_node is not True:
-                node.arrived_destination = True
                 self.list_of_last_nodes.append(node)
                 self.list_of_ended_nodes.append(node)
                 continue
@@ -353,6 +352,8 @@ class Graph:
         return
 
     def print_results_file(self):
+        #budu tady muset udelat item counter pro max number of results?
+        #jinak uz to mam asi vse, rozclenit do special souboru? Dosepsat popisky dokumentaci a poslat, max 2 h prace!
         result_data = []
         for node in self.list_of_last_nodes:
             flight_line = []
@@ -384,7 +385,7 @@ class Graph:
             results_dict["total_price"] = final_node.current_price
             results_dict["travel_time"] = str(time_traveled)
             result_data.append(results_dict)
-        file_name = "flight_search" + self.origin + "_" +self.destination + ".json"
+        file_name = "flight_search_" + self.origin + "_" + self.destination + ".json"
         with open(file_name, 'w+') as file:
             json.dump(result_data, file, indent=4)
 
@@ -456,12 +457,18 @@ def main(argv):
     source_file, start, final_destination, bags, return_trip, max_airports, departure_after, return_after, results_limit = process_inputs(
         argv)
     if test_file(source_file):
-        # predelat do print result
+        # predelat do print result?
         print("File found, Searched combination:\nOrigin: {0}, Destination: {1}, Bags: {2}, Return trip: {3}".format(
             start,
             final_destination,
             bags,
             return_trip))
+
+        print("----------------------------------------")
+
+        if return_after is not None and return_trip is False:
+            print('--return_after date is valid only for return trip, this parameter is not being processed.')
+
         new_search = FlightSearch(source_file, start, final_destination, bags, return_trip)
         # new_search.open_source_file()
         columns = new_search.read_first_line()
@@ -481,6 +488,7 @@ def main(argv):
         flights_graph.add_searched_results(flights_graph.first_node, table)
         # print("Last nodes")
 
+        print("Number of results found:")
         flights_graph.get_last_nodes_len()
         flights_graph.test_results_exist()
         # flights_graph.print_last_nodes()
@@ -490,15 +498,20 @@ def main(argv):
         # kdyz bych chtela videt vsechny mozne vysledky
         # flights_graph.print_part_last_nodes()
 
+        print("Best results for selected conditions: \n")
         flights_graph.print_best_results()
-        # print("From attribute: ", flights_graph.best_solution_time)
+
+        print("All results are in flight_search_{0}_{1}.csv file".format(flights_graph.origin, flights_graph.destination))
 
         if new_search.return_trip is True:
-            print("\n Return trip \n")
+            print("\n ------------- Return trip ------------- \n")
+            # to check weather there was condition for departure after:
+            return_after = departure_after if return_after is None else return_after
             graph_return = Graph(final_destination, start, bags, flight_table, max_airports, return_after,
                                  results_limit)
             table_return = flight_table.search_origin_airport(final_destination)
             graph_return.add_searched_results(graph_return.first_node, table_return)
+            print("Number of results found:")
             graph_return.get_last_nodes_len()
             graph_return.test_results_exist()
             graph_return.sort_results()
@@ -506,7 +519,10 @@ def main(argv):
             graph_return.print_results_file()
 
             # graph_return.print_part_last_nodes()
+            print("Best results for selected conditions: \n")
             graph_return.print_best_results()
+            print("All results are in flight_search_{0}_{1}.csv file".format(graph_return.origin,
+                                                                             graph_return.destination))
 
 
 if __name__ == "__main__":
