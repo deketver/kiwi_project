@@ -265,13 +265,12 @@ class Node:
             """Flight no: {0}, origin {1}, destination {2}, \n
             origin price {3}, cumulated price {4},\n
             departure time {5}, arrival time {6},\n
-            number of bags allowed {7}, bags price {8},\n
-            list of visited airports: {9}""".format(self.flight_no, self.origin,
-                                                    self.destination, self.base_price,
-                                                    self.current_price,
-                                                    self.departure_time, self.arrival_time,
-                                                    self.bags_allowed,
-                                                    self.bag_price, self.list_visited_airpt))
+            number of bags allowed {7}, bags price {8}""".format(self.flight_no, self.origin,
+                                                                 self.destination, self.base_price,
+                                                                 self.current_price,
+                                                                 self.departure_time, self.arrival_time,
+                                                                 self.bags_allowed,
+                                                                 self.bag_price))
 
     def return_parent(self):
         return self.parent
@@ -353,7 +352,7 @@ class Graph:
                 self.add_searched_results(node, new_searched_results)
         return
 
-    def print_results_file(self, exists=False):
+    def print_results_file(self):
         result_data = []
         for node in self.list_of_last_nodes:
             flight_line = []
@@ -370,8 +369,7 @@ class Graph:
                 node = node.parent
             time_traveled = datetime.fromisoformat(arrival) - datetime.fromisoformat(departure)
             flight_line.reverse()
-            results_dict = {"flights":[]}
-            item_dict = {}
+            results_dict = {"flights": []}
             for index in range(len(flight_line)):
                 item = flight_line[index]
                 item_dict = {"flight_no": item.flight_no, "origin": item.origin, "destination": item.destination,
@@ -386,12 +384,9 @@ class Graph:
             results_dict["total_price"] = final_node.current_price
             results_dict["travel_time"] = str(time_traveled)
             result_data.append(results_dict)
-        if not exists:
-            with open('results.csv', 'w+') as file:
-                json.dump(result_data, file, indent=4)
-        else:
-            with open('results.csv', 'a+') as file:
-                json.dump(result_data, file, indent=4)
+        file_name = "flight_search" + self.origin + "_" +self.destination + ".json"
+        with open(file_name, 'w+') as file:
+            json.dump(result_data, file, indent=4)
 
     def print_last_nodes(self):
         for item in self.list_of_last_nodes:
@@ -458,9 +453,10 @@ class Graph:
 def main(argv):
     """Main function"""
     # print(argv)
-    source_file, start, final_destination, bags, return_trip, max_airports, departure_after, return_after, results_limit = process_inputs(argv)
+    source_file, start, final_destination, bags, return_trip, max_airports, departure_after, return_after, results_limit = process_inputs(
+        argv)
     if test_file(source_file):
-        #predelat do print result
+        # predelat do print result
         print("File found, Searched combination:\nOrigin: {0}, Destination: {1}, Bags: {2}, Return trip: {3}".format(
             start,
             final_destination,
@@ -479,7 +475,8 @@ def main(argv):
 
         # ted budu chtit hledat jednotliva letiste a napojovat je na sebe
         # origin_node = Node(None, None, start) dle finalni architektury asi nebude potreba
-        flights_graph = Graph(start, final_destination, bags, flight_table, max_airports, departure_after, results_limit)
+        flights_graph = Graph(start, final_destination, bags, flight_table, max_airports, departure_after,
+                              results_limit)
         table = flight_table.search_origin_airport(start)
         flights_graph.add_searched_results(flights_graph.first_node, table)
         # print("Last nodes")
@@ -494,18 +491,19 @@ def main(argv):
         # flights_graph.print_part_last_nodes()
 
         flights_graph.print_best_results()
-        #print("From attribute: ", flights_graph.best_solution_time)
+        # print("From attribute: ", flights_graph.best_solution_time)
 
         if new_search.return_trip is True:
             print("\n Return trip \n")
-            graph_return = Graph(final_destination, start, bags, flight_table, max_airports, return_after, results_limit)
+            graph_return = Graph(final_destination, start, bags, flight_table, max_airports, return_after,
+                                 results_limit)
             table_return = flight_table.search_origin_airport(final_destination)
             graph_return.add_searched_results(graph_return.first_node, table_return)
             graph_return.get_last_nodes_len()
             graph_return.test_results_exist()
             graph_return.sort_results()
 
-            graph_return.print_results_file(True)
+            graph_return.print_results_file()
 
             # graph_return.print_part_last_nodes()
             graph_return.print_best_results()
