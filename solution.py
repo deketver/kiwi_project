@@ -7,6 +7,7 @@ import re
 from datetime import datetime
 from datetime import timedelta
 import os.path
+import json
 
 
 # osetrit moznost, kdy mam serii napriklad 6 letu, ze se v nem nevyskytuji nejaka repetitivni letiste
@@ -24,9 +25,10 @@ import os.path
 
 # zkusit vysortovat vysledky dle nejvyssih poctu navstivenych letist a zkonstrlovat :)
 
-#pridat departure_after, arival_after, number of results for each direction do you wish to show?
-#main priority - time traveled, price? - default is price
-#max number of results shown
+# pridat departure_after, arival_after, number of results for each direction do you wish to show?
+# main priority - time traveled, price? - default is price
+# max number of results shown
+# max number of airports visited
 
 def process_inputs(argv):
     """Function to read inputs from command line"""
@@ -34,12 +36,20 @@ def process_inputs(argv):
     regex_airport = r"^[A-Z]{3}$"
     regex_bags = r"bags="
     regex_return = r"return"
+    regex_max_airport = r"max_airports="
+    regex_departure_after = r"departure_after="
+    regex_return_after = r"return_after="
+    regex_results_limit = r"results_limit="
 
     bags = 0
     return_trip = False
     source_file = argv[0]
     start = ""
     final_destination = ""
+    max_airports = 7
+    departure_after = None
+    return_after = None
+    result_limit = None
 
     if len(argv) < 3:
         print("Not enough input arguments, at least 3 arguments needed: source_file, departure, arrival")
@@ -65,13 +75,42 @@ def process_inputs(argv):
                 bags = 0
         elif re.search(regex_return, item) is not None:
             return_trip = True
+        elif re.search(regex_max_airport, item) is not None:
+            try:
+                max_airports = int(item.split("=")[1])
+            except:
+                print(
+                    "Number of maximum airports visited given is not integer,set to default 7.\n Correct format is e: --maximum_airports=7")
+        elif re.search(regex_departure_after, item) is not None:
+            date_format = r"^[0-9]{4}-[0-9]{2}-[0-9]{2}"
+            given_date = item.split("=")[1]
+            if re.search(date_format, given_date) is not None:
+                departure_after = given_date
+            else:
+                print(
+                    "Departure after date was not in expected format --departure_after=YYYY-MM-DD, set to default None")
+        elif re.search(regex_return_after, item) is not None:
+            date_format = r"^[0-9]{4}-[0-9]{2}-[0-9]{2}"
+            given_date = item.split("=")[1]
+            if re.search(date_format, given_date) is not None:
+                return_after = given_date
+            else:
+                print("Return after date was not in expected format --return_after=YYYY-MM-DD, set to default None")
+
+        elif re.search(regex_results_limit, item) is not None:
+            try:
+                result_limit = int(item.split("=")[1])
+            except:
+                print(
+                    "Results limit given is not integer,set to default None.\n Correct format is e: --results_limit=10")
+
         else:
             print("Argument ", item, "was not identified.")
             print("Possible arguments: source_file origin destination --bags=1 --return")
-            print("origin and destination are airports in format AAA YYY")
+            print("Origin and Destination are airports in format AAA YYY")
             exit(0)
 
-    return source_file, start, final_destination, bags, return_trip
+    return source_file, start, final_destination, bags, return_trip, max_airports, departure_after, return_after, result_limit
 
 
 def test_file(source_file):
@@ -234,19 +273,13 @@ class Node:
                                                     self.bags_allowed,
                                                     self.bag_price, self.list_visited_airpt))
 
-    def add_searched_results(self, parent, searched_results):
-        number_of_new_nodes = len(searched_results)
-        for i in range(number_of_new_nodes):
-            origin = searched_results[i][1]
-            node = Node(searched_results[i], parent, origin)
-            node.assign_data_node()
-
     def return_parent(self):
         return self.parent
 
 
 class Graph:
-    def __init__(self, origin, destination, number_of_bags, data_table, max_number_airports=7):
+    def __init__(self, origin, destination, number_of_bags, data_table, max_number_airports=7, results_limit=None,
+                 search_after=None, return_after=None):
         self.first_node = Node(None, None, origin)
         self.list_of_nodes = [self.first_node]  # maybe not neede?
         self.list_of_last_nodes = []
@@ -260,6 +293,9 @@ class Graph:
         self.best_solution_time = None
         self.best_price = 0
         self.line_max_bags = 0
+        self.results_limit = results_limit
+        self.search_after_date = search_after,
+        self.return_after = return_after
 
     def add_node(self, node):
         self.list_of_nodes.append(node)
@@ -317,6 +353,46 @@ class Graph:
                 self.add_searched_results(node, new_searched_results)
         return
 
+    def print_results_file(self, exists=False):
+        result_data = []
+        for node in self.list_of_last_nodes:
+            flight_line = []
+            arrival = node.arrival_time
+            departure = ""
+            max_bags_line = 100
+            final_node = node
+            while node.parent is not None:
+                flight_line.append(node)
+                if node.bags_allowed < max_bags_line:
+                    max_bags_line = node.bags_allowed
+                if node.parent.departure_time is None:
+                    departure = node.departure_time
+                node = node.parent
+            time_traveled = datetime.fromisoformat(arrival) - datetime.fromisoformat(departure)
+            flight_line.reverse()
+            results_dict = {"flights":[]}
+            item_dict = {}
+            for index in range(len(flight_line)):
+                item = flight_line[index]
+                item_dict = {"flight_no": item.flight_no, "origin": item.origin, "destination": item.destination,
+                             "departure": item.departure_time, "arrival": item.arrival_time,
+                             "base_price": item.base_price, "bag_price": item.bag_price,
+                             "bags_allowed": item.bags_allowed}
+                results_dict["flights"].append(item_dict)
+            results_dict["bags_allowed"] = max_bags_line
+            results_dict["bags_count"] = self.bags_required
+            results_dict["destination"] = self.destination
+            results_dict["origin"] = self.origin
+            results_dict["total_price"] = final_node.current_price
+            results_dict["travel_time"] = str(time_traveled)
+            result_data.append(results_dict)
+        if not exists:
+            with open('results.csv', 'w+') as file:
+                json.dump(result_data, file, indent=4)
+        else:
+            with open('results.csv', 'a+') as file:
+                json.dump(result_data, file, indent=4)
+
     def print_last_nodes(self):
         for item in self.list_of_last_nodes:
             item.print_node_data()
@@ -328,11 +404,13 @@ class Graph:
         self.list_of_last_nodes = sorted(self.list_of_last_nodes, key=lambda node: node.departure_time)
         self.list_of_last_nodes = sorted(self.list_of_last_nodes, key=lambda node: node.current_price)
         self.is_sorted = True
+        return
 
     def test_results_exist(self):
         if len(self.list_of_last_nodes) < 1:
             print("No results found for given search combination")
             exit(0)
+        return
 
     def print_whole_line(self, node, best_results=False):
         arrival = node.arrival_time
@@ -380,12 +458,14 @@ class Graph:
 def main(argv):
     """Main function"""
     # print(argv)
-    source_file, start, final_destination, bags, return_trip = process_inputs(argv)
+    source_file, start, final_destination, bags, return_trip, max_airports, departure_after, return_after, results_limit = process_inputs(argv)
     if test_file(source_file):
-        print("File found, Searched combination:\nOrigin: {0}, Destination: {1}, Bags: {2}, Return trip: {3}".format(start,
-                                                                                                                   final_destination,
-                                                                                                                   bags,
-                                                                                                                   return_trip))
+        #predelat do print result
+        print("File found, Searched combination:\nOrigin: {0}, Destination: {1}, Bags: {2}, Return trip: {3}".format(
+            start,
+            final_destination,
+            bags,
+            return_trip))
         new_search = FlightSearch(source_file, start, final_destination, bags, return_trip)
         # new_search.open_source_file()
         columns = new_search.read_first_line()
@@ -399,7 +479,7 @@ def main(argv):
 
         # ted budu chtit hledat jednotliva letiste a napojovat je na sebe
         # origin_node = Node(None, None, start) dle finalni architektury asi nebude potreba
-        flights_graph = Graph(start, final_destination, bags, flight_table)
+        flights_graph = Graph(start, final_destination, bags, flight_table, max_airports, departure_after, results_limit)
         table = flight_table.search_origin_airport(start)
         flights_graph.add_searched_results(flights_graph.first_node, table)
         # print("Last nodes")
@@ -408,26 +488,27 @@ def main(argv):
         flights_graph.test_results_exist()
         # flights_graph.print_last_nodes()
         flights_graph.sort_results()
+        flights_graph.print_results_file()
 
         # kdyz bych chtela videt vsechny mozne vysledky
         # flights_graph.print_part_last_nodes()
 
         flights_graph.print_best_results()
-        print("From attribute: ", flights_graph.best_solution_time)
+        #print("From attribute: ", flights_graph.best_solution_time)
 
         if new_search.return_trip is True:
             print("\n Return trip \n")
-            graph_return = Graph(final_destination, start, bags, flight_table)
+            graph_return = Graph(final_destination, start, bags, flight_table, max_airports, return_after, results_limit)
             table_return = flight_table.search_origin_airport(final_destination)
             graph_return.add_searched_results(graph_return.first_node, table_return)
             graph_return.get_last_nodes_len()
             graph_return.test_results_exist()
             graph_return.sort_results()
 
+            graph_return.print_results_file(True)
+
             # graph_return.print_part_last_nodes()
             graph_return.print_best_results()
-
-            print("From attribute: ", graph_return.best_solution_time)
 
 
 if __name__ == "__main__":
