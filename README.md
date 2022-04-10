@@ -17,22 +17,22 @@
 
 ## How to run
 Execution file is: solution.py
-How to run from command prompt or terminal, possible way to run depending on OS (example):
+How to run from command prompt or terminal, possible way to run depending on OS (example): 
 - Windows: python solution.py example\example3.csv JBN EZO --bags=2 --departure_after=2021-09-02 --return_after=2021-09-07 --max_airports=3
 - Linux: python3 solution.py example/example3.csv JBN EZO --bags=2 --return --departure_after=2021-09-09 --return_after=2021-09-07 --max_airports=7 --results_limit=2
 
 
 ## What program does
 
-Program search through all possible combinations based on input parameters given. 
-The best rersults are printed in console. All results for given limitations are printed in JSON file, which is named according to the origin and destination airport. 
-Program recursively search flights from origin airports, until it reaches final destination. Every time, the new 'origin' airport is set based on the previous flight destination.
-Search ends when the desired final destination is met or there are not any other possible combinations for search, as the flights were excluded due to given conditions.
+Program search through all possible combinations based on input parameters given.<br>
+The best rersults are printed in console. All results for given limitations are printed in JSON file, which is named according to the origin and destination airport.<br>
+Program recursively search flights from origin airports, until it reaches final destination. Every time, the new 'origin' airport is set based on the previous flight destination.<br>
+Search ends when the desired final destination is met or there are not any other possible combinations for search, as the flights were excluded due to given conditions.<br>
 Final results are sorted based on final total price. 
 
 
 ## Program returns
-For one-way trip, creates JSON file with results flight_search_origin_destination.json
-For return trip, creates additional JSON with results for return trip: flight_seach_destination_origin.json
+- For one-way trip, creates JSON file with results flight_search_origin_destination.json
+- For return trip, creates additional JSON with results for return trip: flight_seach_destination_origin.json
 
 
