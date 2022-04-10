@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
-import csv
 import sqlite3
 import re
 from datetime import datetime
@@ -10,28 +9,9 @@ import os.path
 import json
 
 
-# osetrit moznost, kdy mam serii napriklad 6 letu, ze se v nem nevyskytuji nejaka repetitivni letiste
-# upravit nektere metody, neco by slo udelat lepe?
-# pridat logiku pro zpatecny lety - done
-# pro uzivatele prepinace, kdy chce omezit jeste casy odlety, priletu, dobu pobytu?
-# Zkusit otestovat, zda podava dobre reseni? Ale jak? Co pocty moznosti?
-# otocit poradi printeni vysledku
-# logika vypisovani do souboru
-# pocitat celkovou dobu byti na ceste - done
-# pridat jeste razeni od doby letu?
-# napsat si sama nejake assertion testy? ale asi az v patek nebo o vikendu, az bude cas!
-# zitra hlavne delat na praci a veci do skoly Veruuu :)
-
-
-# zkusit vysortovat vysledky dle nejvyssih poctu navstivenych letist a zkonstrlovat :)
-
-# pridat departure_after, arival_after, number of results for each direction do you wish to show?
-# main priority - time traveled, price? - default is price
-# max number of results shown
-# max number of airports visited
-
 def process_inputs(argv):
-    """Function to read inputs from command line"""
+    """Function to read inputs from command line
+    arguments: argv - list of input information provided by user"""
 
     regex_airport = r"^[A-Z]{3}$"
     regex_bags = r"bags="
@@ -52,14 +32,13 @@ def process_inputs(argv):
     result_limit = None
 
     if len(argv) < 3:
-        print("Not enough input arguments, at least 3 arguments needed: source_file, departure, arrival")
+        print("Not enough input arguments, at least 3 arguments needed: source_file, origin, destination")
         exit(0)
 
-    # print(os.getcwd())
     if not os.path.exists(source_file):
-        print("Source file was not found.\nMake sure to use \'/\' in file path when running on Linux and check the "
-              "file name.\nSource "
+        print("Source file was not found.\nCheck file path and the file name.\nSource "
               "file has to be the first argument after executing script.")
+        print("Correct list of arguments, example: solution.py example/example3.csv JBN EZO")
         exit(0)
     for item in argv[1:]:
         if re.search(regex_airport, item) is not None:
@@ -106,7 +85,8 @@ def process_inputs(argv):
 
         else:
             print("Argument ", item, "was not identified.")
-            print("Possible arguments: source_file origin destination --bags=1 --return")
+            print("Possible arguments: source_file origin destination --bags=1 --return --max_airports=4 "
+                  "--departure_after=YYYY-MM-DD --return_after=YYYY-MM-DD --results_limit=10")
             print("Origin and Destination are airports in format AAA YYY")
             exit(0)
 
@@ -114,29 +94,22 @@ def process_inputs(argv):
 
 
 def test_file(source_file):
-    """Function tests if given source file exists"""
+    """
+    Function tests if given source file exists
+    params: source_file - path to given file"""
     if not os.path.exists(source_file):
         raise Exception("Input file not found")
     return True
 
 
 class FlightSearch:
-    """FlightSearch class"""
+    """FlightSearch class
+    - used to read first line of the file
+    """
 
-    def __init__(self, source_file, start, final_destination, bags, return_trip):
+    def __init__(self, source_file, return_trip):
         self.source_file = source_file
-        self.start_destination = start,
-        self.final_destination = final_destination,
-        self.bags = bags
         self.return_trip = return_trip
-
-    def open_source_file(self):
-        # mozna nebude potreba?
-        with open(self.source_file, 'r+') as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                print(row)
-                break
 
     def read_first_line(self):
         """Function returns first line of the source_file"""
@@ -148,12 +121,13 @@ class FlightSearch:
 
 
 class FlightDatabase:
-    """To store flight information"""
+    """
+    To store all flights information - data from csv file.
+    Creates a database in :memory:, database consists only of one table.
+    """
 
     def __init__(self, source_file, columns):
         self.columns = columns
-        # self.all_columns = self.columns + ", utc_departure, utc_arrival"
-
         self.connection = sqlite3.connect(":memory:")
         self.cursor = None
         self.source_file = source_file
@@ -161,13 +135,10 @@ class FlightDatabase:
         self.origin_table = None
         self.destination_table = None
 
-    def create_connection(self):
-        """Returns connection to in memory database"""
-        # Mozna nebude potreba?
-        self.connection = sqlite3.connect(":memory:")
-        return
-
     def create_table(self):
+        """
+        Method creates data table and inserts data from source csv file.
+        """
         self.cursor = self.connection.cursor()
         self.cursor.execute("Create table flight_data (" + self.columns + ");")
         first_row = 0
@@ -184,42 +155,51 @@ class FlightDatabase:
                     first_row += 1
 
     def questionmark_str(self) -> str:
+        """
+        Methods to get string of '?' needed for table data insert.
+        return: question_string - string of question marks, number of which corresponds with number of columns in table
+        """""
         mark_list = ['?' for item in self.columns.split(',')]
         question_string = ','.join(mark_list)
         return question_string
 
     def read_data(self):
+        """
+        Method to read and print into console all data into flight_data table.
+        """
         self.cursor.execute("select * from flight_data;")
         read = self.cursor.fetchall()
         for row in read:
             print(row)
 
-    def search_airports(self, origin, destination):
-        # print("Select * from {0} WHERE {1}={2}".format(self.table_name, 'origin', "\'"+origin+"\'"))
+    def search_airports(self, origin: str, destination: str):
+        """
+        Method checks weather origin and destination airports are present in dataset.
+        :param origin: origin airport
+        :param destination: destination airport
+        """
         self.cursor.execute("Select * from {0} WHERE {1}={2}".format(self.table_name, 'origin', "\'" + origin + "\'"))
         result = self.cursor.fetchall()
-        if result:
-            self.origin_table = result
-            print("Pocet ziskanych vysledku je:", len(result))
-        else:
+        if not result:
             print("Origin not found in table")
             exit(0)
         self.cursor.execute(
             "Select * from {0} WHERE {1}={2}".format(self.table_name, 'destination', "\'" + destination + "\'"))
         result = self.cursor.fetchall()
-        if result:
-            print("Pocet ziskanych vysledku je:", len(result))
-            self.destination_table = result
-        else:
+        if not result:
             print("Destination not found in table")
             exit(0)
+        return
 
     def search_origin_airport(self, airport):
+        """
+        Method sets self.origin_table containing flight table data for origin airport given.
+        :param airport: origin airport, for which are we searching flights
+        """
         self.cursor.execute("Select * from {0} WHERE {1}={2}".format(self.table_name, 'origin', "\'" + airport + "\'"))
         result = self.cursor.fetchall()
         if result:
             self.origin_table = result
-            # print("Pocet ziskanych vysledku je:", len(result))
             return self.origin_table
         else:
             print("Origin not found in table")
@@ -227,6 +207,12 @@ class FlightDatabase:
 
 
 class Node:
+    """
+    Node class.
+    One Node represents given flight will all given flight information.
+    Node has an information about its ancestor - parent (Node)
+    """
+
     def __init__(self, data, parent, origin):
         self.data = data
         self.parent = parent
@@ -244,6 +230,9 @@ class Node:
         self.list_visited_airpt = []
 
     def assign_data_node(self):
+        """
+        Method reads corresponding data for node and assigns it to appropriate class attributes.
+        """
         self.flight_no = self.data[0]
         self.origin = self.data[1]
         self.destination = self.data[2]
@@ -253,13 +242,15 @@ class Node:
         self.bag_price = float(self.data[6])
         self.bags_allowed = int(self.data[7])
         self.number_of_predecessor = self.parent.number_of_predecessor + 1
-        # zkontrolovat - nepridava se mi to duplikovane?
         self.list_visited_airpt = self.parent.list_visited_airpt + [self.origin]
 
     def set_origin(self, origin):
         self.origin = origin
 
     def print_node_data(self):
+        """
+        Method prints attributes data for given Node.
+        """
         print(
             """Flight no: {0}, origin {1}, destination {2}, \n
             origin price {3}, cumulated price {4},\n
@@ -276,7 +267,7 @@ class Graph:
     def __init__(self, origin, destination, number_of_bags, data_table, max_number_airports=7, search_after=None,
                  results_limit=None):
         self.first_node = Node(None, None, origin)
-        self.list_of_nodes = [self.first_node]  # maybe not neede?
+        self.list_of_nodes = [self.first_node]
         self.list_of_last_nodes = []
         self.list_of_ended_nodes = []
         self.destination = destination
@@ -292,75 +283,109 @@ class Graph:
         self.results_limit = results_limit
 
     def add_node(self, node):
+        """
+        Method adds given node to list of all nodes attribute
+        :param node: node to be added to the list
+        """
         self.list_of_nodes.append(node)
 
     def add_searched_results(self, parent: Node, searched_results):
-        list_of_to_be_searched = []
+        """
+        Function goes through all results obtained from SQL select for given origin airport
+        to see where are all possible flights going. Then based on restriction recursively calls to search
+        for following flights from given destination airport to see, whether this line of flights finishes in destination
+        given by the user.
+        params: parent (required type Node) - creating new nodes for given parent
+                searched_results - queried results on data table for given airport
+        """
         number_of_new_nodes = len(searched_results)
-        # print("number of new nodes", number_of_new_nodes)
         for i in range(number_of_new_nodes):
             origin = searched_results[i][1]
             node = Node(searched_results[i], parent, origin)
             node.assign_data_node()
-            # node.print_node_data()
             self.add_node(node)
+
+            # whether flight meets conditions for number of required bags
             if node.bags_allowed < self.bags_required:
                 node.ended_node = True
                 self.list_of_ended_nodes.append(node)
                 continue
 
+            # if I got back to the airport I was starting at, exclude this result
             if node.destination == self.origin:
                 node.ended_node = True
                 self.list_of_ended_nodes.append(node)
                 continue
 
-            # tato podminka mi vyradila pulku reseni, mrknout se na reseni, zda ok?
+            # if I got back to the airport I already visited before, exclude this result
             if node.destination in node.list_visited_airpt:
                 node.ended_node = True
                 self.list_of_ended_nodes.append(node)
                 continue
+
+            # if I got over the limit of number of visited airports and I still have not arrived, exclude this result
             if node.number_of_predecessor > self.max_number_airports:
                 node.ended_node = True
                 self.list_of_ended_nodes.append(node)
                 continue
+
+            # if search_after_date is provided by user, only flights after this date are valid
             if self.search_after_date and datetime.fromisoformat(node.departure_time) < datetime.fromisoformat(
                     self.search_after_date):
                 node.ended_node = True
                 self.list_of_ended_nodes.append(node)
                 continue
+
+            # if there is not more than 1 hour for transfer flight, exclude this result
             if parent.arrival_time and (datetime.fromisoformat(parent.arrival_time) + timedelta(hours=1) > \
                                         datetime.fromisoformat(node.departure_time)):
                 node.ended_node = True
                 self.list_of_ended_nodes.append(node)
                 continue
+
+            # if there is more than 6 hours for transfer flight, exclude this result
             if parent.arrival_time and (datetime.fromisoformat(parent.arrival_time) + \
                                         timedelta(hours=6) < datetime.fromisoformat(node.departure_time)):
                 node.ended_node = True
                 self.list_of_ended_nodes.append(node)
                 continue
-                # zde musim rozestringovat pripadne prijezdove datum, pricist k nemu hodinu a porovnat s aktualni node departure casem
+
+            # calculate current price for given flight line
             node.current_price = parent.current_price + self.bags_required * node.bag_price + node.base_price
+
+            # if we arrived to requested destination and the flight was not excluded, add this result
             if node.destination == self.destination and node.ended_node is not True:
                 self.list_of_last_nodes.append(node)
                 self.list_of_ended_nodes.append(node)
                 continue
-            # print('got through all conditions')
+
+            # we are still not desired destination, but flight was not excluded on conditions, search results for this
+            # airport
             if node.ended_node is not True:
                 new_searched_results = self.data_table.search_origin_airport(node.destination)
-                # print(new_searched_results)
                 self.add_searched_results(node, new_searched_results)
+
         return
 
     def print_results_file(self):
-        #budu tady muset udelat item counter pro max number of results?
-        #jinak uz to mam asi vse, rozclenit do special souboru? Dosepsat popisky dokumentaci a poslat, max 2 h prace!
+        """
+        Method creates json file with all possible flights whose are matching given search conditions.
+        """
         result_data = []
+
+        # if there is limit for returned results provided by user, we track number of printed results
+        limit_counter = 0
+
+        #  to recreate the whole flight line based on the last (arrival) node, loop through all successful nodes
         for node in self.list_of_last_nodes:
+
+            # store flight line information in flight_line
             flight_line = []
             arrival = node.arrival_time
             departure = ""
-            max_bags_line = 100
+            max_bags_line = 1000
             final_node = node
+
             while node.parent is not None:
                 flight_line.append(node)
                 if node.bags_allowed < max_bags_line:
@@ -385,36 +410,55 @@ class Graph:
             results_dict["total_price"] = final_node.current_price
             results_dict["travel_time"] = str(time_traveled)
             result_data.append(results_dict)
+            if self.results_limit:
+                limit_counter += 1
+                if limit_counter >= self.results_limit:
+                    break
+
         file_name = "flight_search_" + self.origin + "_" + self.destination + ".json"
         with open(file_name, 'w+') as file:
             json.dump(result_data, file, indent=4)
 
     def print_last_nodes(self):
+        """
+        Method loops through all resulted flight lines and prints flight data.
+        """
         for item in self.list_of_last_nodes:
             item.print_node_data()
 
     def get_last_nodes_len(self):
-        print(len(self.list_of_last_nodes))
+        """
+        Returns: length of the all valid results
+        """
+        return len(self.list_of_last_nodes)
 
     def sort_results(self):
+
+        # sort given results based on keys
         self.list_of_last_nodes = sorted(self.list_of_last_nodes, key=lambda node: node.departure_time)
         self.list_of_last_nodes = sorted(self.list_of_last_nodes, key=lambda node: node.current_price)
         self.is_sorted = True
         return
 
     def test_results_exist(self):
+        """
+        Method tests whether there are any search results obtained for given inputs.
+        """
         if len(self.list_of_last_nodes) < 1:
             print("No results found for given search combination")
             exit(0)
         return
 
     def print_whole_line(self, node, best_results=False):
+        """
+        Method prints the whole line of
+        :param node: node from the list of last nodes (successful nodes)
+        :param best_results: whether I want to save best result to attribute or not
+        """
         arrival = node.arrival_time
         departure = ""
-        max_bags_line = 100
+        max_bags_line = 1000
         while node.parent is not None:
-            # print("Parent type", type(node.parent))
-            # print("Is parrent None? ", node.parent is None)
             node.print_node_data()
             if node.bags_allowed < max_bags_line:
                 max_bags_line = node.bags_allowed
@@ -422,9 +466,7 @@ class Graph:
                 departure = node.departure_time
                 self.best_price = node.current_price
             node = node.parent
-            # print("Node departure", node.departure_time)
-        # departure = node.departure_time
-        print("departure: ", departure, "arrival: ", arrival)
+        print("Departure: ", departure, "\nArrival: ", arrival)
         time_traveled = datetime.fromisoformat(arrival) - datetime.fromisoformat(departure)
         print("Time totally traveled: ", time_traveled)
         if best_results:
@@ -432,6 +474,9 @@ class Graph:
             self.line_max_bags = max_bags_line
 
     def print_part_last_nodes(self, length=10):
+        """Method prints limited number of resulted flights
+         param: length - number of resulted flights to print
+         """
         if len(self.list_of_last_nodes) > length:
             finish = length
         else:
@@ -442,6 +487,9 @@ class Graph:
             print("Line end\n")
 
     def print_best_results(self):
+        """
+        Method prints only best results in console
+        """
         if self.is_sorted is True:
             best_item = self.list_of_last_nodes[0]
             self.print_whole_line(best_item, True)
@@ -452,77 +500,91 @@ class Graph:
 
 
 def main(argv):
-    """Main function"""
-    # print(argv)
+    """
+    Main function
+    """
     source_file, start, final_destination, bags, return_trip, max_airports, departure_after, return_after, results_limit = process_inputs(
         argv)
     if test_file(source_file):
-        # predelat do print result?
-        print("File found, Searched combination:\nOrigin: {0}, Destination: {1}, Bags: {2}, Return trip: {3}".format(
-            start,
-            final_destination,
-            bags,
-            return_trip))
 
-        print("----------------------------------------")
+        print("File found, Searched combination:\nOrigin: {0}, Destination: {1}, Bags: {2}, Return trip: {3}, "
+              "Results limit: {4}, Max airports visited: {5}\n".format(start,
+                                                                       final_destination,
+                                                                       bags,
+                                                                       return_trip, results_limit, max_airports))
 
         if return_after is not None and return_trip is False:
+            print("WARNING")
             print('--return_after date is valid only for return trip, this parameter is not being processed.')
 
-        new_search = FlightSearch(source_file, start, final_destination, bags, return_trip)
-        # new_search.open_source_file()
+        if departure_after and return_after:
+            if datetime.fromisoformat(departure_after) > datetime.fromisoformat(return_after):
+                print("WARNING")
+                print("Return after date is before departure date.")
+                print("Departure date given: {0},\nReturn date given: {1}".format(departure_after, return_after))
+                print("Return after date is set to None")
+                return_after = None
+
+        # start printing results
+        print("----------------------------------------\n")
+
+        new_search = FlightSearch(source_file, return_trip)
         columns = new_search.read_first_line()
+
+        # flight_table to store all data from given csv. input file
         flight_table = FlightDatabase(source_file, columns)
 
-        # Vytvoreni tabulky a naplneni daty
+        # create table and insert data
         flight_table.create_table()
 
-        # abych otestovala, zda tam vubec zdrojove a cilove letiste v datech je:
-        # flight_table.search_airports(start, final_destination)
+        # test weather origin and destination airports are present in dataset
+        flight_table.search_airports(start, final_destination)
 
-        # ted budu chtit hledat jednotliva letiste a napojovat je na sebe
-        # origin_node = Node(None, None, start) dle finalni architektury asi nebude potreba
         flights_graph = Graph(start, final_destination, bags, flight_table, max_airports, departure_after,
                               results_limit)
+
+        # create initial database search for
         table = flight_table.search_origin_airport(start)
         flights_graph.add_searched_results(flights_graph.first_node, table)
-        # print("Last nodes")
 
         print("Number of results found:")
-        flights_graph.get_last_nodes_len()
+        print(flights_graph.get_last_nodes_len())
         flights_graph.test_results_exist()
-        # flights_graph.print_last_nodes()
         flights_graph.sort_results()
-        flights_graph.print_results_file()
 
-        # kdyz bych chtela videt vsechny mozne vysledky
-        # flights_graph.print_part_last_nodes()
+        # print all results into json file
+        flights_graph.print_results_file()
 
         print("Best results for selected conditions: \n")
         flights_graph.print_best_results()
 
-        print("All results are in flight_search_{0}_{1}.csv file".format(flights_graph.origin, flights_graph.destination))
+        print("\nAll results are in flight_search_{0}_{1}.csv file".format(flights_graph.origin,
+                                                                           flights_graph.destination))
 
         if new_search.return_trip is True:
             print("\n ------------- Return trip ------------- \n")
+
             # to check weather there was condition for departure after:
             return_after = departure_after if return_after is None else return_after
+
+            # Graph for return trip
             graph_return = Graph(final_destination, start, bags, flight_table, max_airports, return_after,
                                  results_limit)
+
             table_return = flight_table.search_origin_airport(final_destination)
             graph_return.add_searched_results(graph_return.first_node, table_return)
             print("Number of results found:")
-            graph_return.get_last_nodes_len()
+            print(graph_return.get_last_nodes_len())
             graph_return.test_results_exist()
             graph_return.sort_results()
 
+            # print all results into json file
             graph_return.print_results_file()
 
-            # graph_return.print_part_last_nodes()
             print("Best results for selected conditions: \n")
             graph_return.print_best_results()
-            print("All results are in flight_search_{0}_{1}.csv file".format(graph_return.origin,
-                                                                             graph_return.destination))
+            print("\nAll results are in flight_search_{0}_{1}.csv file".format(graph_return.origin,
+                                                                               graph_return.destination))
 
 
 if __name__ == "__main__":
