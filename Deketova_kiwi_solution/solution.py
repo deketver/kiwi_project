@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import sys
 import os
 import sqlite3
 import re
@@ -7,92 +6,50 @@ from datetime import datetime
 from datetime import timedelta
 import os.path
 import json
+import argparse
 
 
-
-def process_inputs(argv):
+def process_inputs():
     """Function to read inputs from command line
     arguments: argv - list of input information provided by user"""
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("source_file", type=str, help="path to source file") #another possibility argparse.FileType('r', encoding='utf-8')
+    parser.add_argument("origin", type=str, help="origin airport")
+    parser.add_argument("destination", type=str, help="destination airport")
+    parser.add_argument("--return", dest="R", help="searches also for return trip", action="store_true")
+    parser.add_argument("--bags", type=int, help="sets number of bags for given trip", action="store", default=0)
+    parser.add_argument("--max_airports", type=int, help="sets maximum number of airports visited in the trip", action="store", default=7)
+    parser.add_argument("--departure_after", type=str, help="departure after date in YYYY-MM-DD format")
+    parser.add_argument("--return_after", type=str, help="return after date in YYYY-MM-DD format")
+    parser.add_argument("--results_limit", type=int, help="sets maximum number of results displayed", action="store")
 
-    regex_airport = r"^[A-Z]{3}$"
-    regex_bags = r"bags="
-    regex_return = r"return$"
-    regex_max_airport = r"max_airports="
-    regex_departure_after = r"departure_after="
-    regex_return_after = r"return_after="
-    regex_results_limit = r"results_limit="
+    args = parser.parse_args()
 
-    bags = 0
-    return_trip = False
-    source_file = argv[0]
-    start = ""
-    final_destination = ""
-    max_airports = 7
-    departure_after = None
-    return_after = None
-    result_limit = None
+    source_file = args.source_file
+    origin = args.origin
+    destination = args.destination
+    return_trip = args.R 
+    bags = args.bags
+    max_airports = args.max_airports
+    departure_after = args.departure_after
+    return_after = args.return_after
+    result_limit = args.results_limit
 
-    if len(argv) < 3:
-        print("Not enough input arguments, at least 3 arguments needed: source_file, origin, destination")
-        exit(0)
+    if departure_after:
+        date_format = r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        if re.search(date_format, departure_after) is None:
+            print(
+                "Departure after date was not in expected format --departure_after=YYYY-MM-DD, set to default None\n")
+            departure_after = None
 
-    if not os.path.exists(source_file):
-        print("Source file was not found.\nCheck file path and the file name.\nSource "
-              "file has to be the first argument after executing script.")
-        print("Correct list of arguments, example: solution.py example/example3.csv JBN EZO")
-        exit(0)
-    for item in argv[1:]:
-        if re.search(regex_airport, item) is not None:
-            if start == "":
-                start = item
-            else:
-                final_destination = item
-        elif re.search(regex_bags, item) is not None:
-            try:
-                bags = int(item.split("=")[1])
-            except:
-                print("Number of bags given is not integer, bags are set to 0.\n Correct format is e: --bags=1\n")
-                bags = 0
-        elif re.search(regex_return, item) is not None:
-            return_trip = True
-        elif re.search(regex_max_airport, item) is not None:
-            try:
-                max_airports = int(item.split("=")[1])
-            except:
-                print(
-                    "Number of maximum airports visited given is not integer,set to default 7.\n Correct format is e: --maximum_airports=7\n")
-        elif re.search(regex_departure_after, item) is not None:
-            date_format = r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-            given_date = item.split("=")[1]
-            if re.search(date_format, given_date) is not None:
-                departure_after = given_date
-            else:
-                print(
-                    "Departure after date was not in expected format --departure_after=YYYY-MM-DD, set to default None\n")
-        elif re.search(regex_return_after, item) is not None:
-            date_format = r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-            given_date = item.split("=")[1]
-            if re.search(date_format, given_date) is not None:
-                return_after = given_date
-            else:
-                print("Return after date was not in expected format --return_after=YYYY-MM-DD, set to default None\n")
-
-        elif re.search(regex_results_limit, item) is not None:
-            try:
-                result_limit = int(item.split("=")[1])
-            except:
-                print(
-                    "Results limit given is not integer,set to default None.\n Correct format is e: --results_limit=10\n")
-
-        else:
-            print("Argument ", item, "was not identified.")
-            print("Possible arguments: source_file origin destination --bags=1 --return --max_airports=4 "
-                  "--departure_after=YYYY-MM-DD --return_after=YYYY-MM-DD --results_limit=10")
-            print("Origin and Destination are airports in format AAA YYY")
-            exit(0)
-
-    return source_file, start, final_destination, bags, return_trip, max_airports, departure_after, return_after, result_limit
+    if return_after:
+        date_format = r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        if re.search(date_format, return_after) is None:
+            print(
+              "Departure after date was not in expected format --departure_after=YYYY-MM-DD, set to default None\n")
+       
+    return source_file, origin, destination, bags, return_trip, max_airports, departure_after, return_after, result_limit
 
 
 def test_file(source_file):
@@ -103,24 +60,13 @@ def test_file(source_file):
         raise Exception("Input file not found")
     return True
 
-
-class FlightSearch:
-    """FlightSearch class
-    - used to read first line of the file
-    """
-
-    def __init__(self, source_file, return_trip):
-        self.source_file = source_file
-        self.return_trip = return_trip
-
-    def read_first_line(self):
-        """Function returns first line of the source_file"""
-        with open(self.source_file, 'r+') as file:
-            for line in file:
-                first_line = line.rstrip()
-                break
-            return first_line
-
+def read_first_line(source_file):
+    """Function returns first line of the source_file"""
+    with open(source_file, 'r+') as file:
+        for line in file:
+            first_line = line.rstrip()
+            break
+        return first_line
 
 class FlightDatabase:
     """
@@ -144,7 +90,6 @@ class FlightDatabase:
         self.cursor = self.connection.cursor()
         self.cursor.execute("Create table flight_data (" + self.columns + ");")
         first_row = 0
-        print("Jsem v create table")
         with open(self.source_file, 'r+') as file:
             for line in file:
                 if first_row > 0:
@@ -165,15 +110,6 @@ class FlightDatabase:
         mark_list = ['?' for item in self.columns.split(',')]
         question_string = ','.join(mark_list)
         return question_string
-
-    def read_data(self):
-        """
-        Method to read and print into console all data into flight_data table.
-        """
-        self.cursor.execute("select * from flight_data;")
-        read = self.cursor.fetchall()
-        for row in read:
-            print(row)
 
     def search_airports(self, origin: str, destination: str):
         """
@@ -270,7 +206,6 @@ class Graph:
     def __init__(self, origin, destination, number_of_bags, data_table, max_number_airports=7, search_after=None,
                  results_limit=None):
         self.first_node = Node(None, None, origin)
-        self.list_of_nodes = [self.first_node]
         self.list_of_last_nodes = []
         self.list_of_ended_nodes = []
         self.destination = destination
@@ -284,13 +219,6 @@ class Graph:
         self.line_max_bags = 0
         self.search_after_date = search_after
         self.results_limit = results_limit
-
-    def add_node(self, node):
-        """
-        Method adds given node to list of all nodes attribute
-        :param node: node to be added to the list
-        """
-        self.list_of_nodes.append(node)
 
     def add_searched_results(self, parent: Node, searched_results):
         """
@@ -306,7 +234,6 @@ class Graph:
             origin = searched_results[i][1]
             node = Node(searched_results[i], parent, origin)
             node.assign_data_node()
-            self.add_node(node)
 
             # whether flight meets conditions for number of required bags
             if node.bags_allowed < self.bags_required:
@@ -375,13 +302,10 @@ class Graph:
         Method creates json file with all possible flights whose are matching given search conditions.
         """
         result_data = []
-
         # if there is limit for returned results provided by user, we track number of printed results
         limit_counter = 0
-
         #  to recreate the whole flight line based on the last (arrival) node, loop through all successful nodes
         for node in self.list_of_last_nodes:
-
             # store flight line information in flight_line
             flight_line = []
             arrival = node.arrival_time
@@ -429,14 +353,7 @@ class Graph:
         for item in self.list_of_last_nodes:
             item.print_node_data()
 
-    def get_last_nodes_len(self):
-        """
-        Returns: length of the all valid results
-        """
-        return len(self.list_of_last_nodes)
-
     def sort_results(self):
-
         # sort given results based on keys
         self.list_of_last_nodes = sorted(self.list_of_last_nodes, key=lambda node: node.departure_time)
         self.list_of_last_nodes = sorted(self.list_of_last_nodes, key=lambda node: node.current_price)
@@ -452,62 +369,12 @@ class Graph:
             exit(0)
         return
 
-    def print_whole_line(self, node, best_results=False):
-        """
-        Method prints the whole line of
-        :param node: node from the list of last nodes (successful nodes)
-        :param best_results: whether I want to save best result to attribute or not
-        """
-        arrival = node.arrival_time
-        departure = ""
-        max_bags_line = 1000
-        while node.parent is not None:
-            node.print_node_data()
-            if node.bags_allowed < max_bags_line:
-                max_bags_line = node.bags_allowed
-            if node.parent.departure_time is None:
-                departure = node.departure_time
-                self.best_price = node.current_price
-            node = node.parent
-        print("Departure: ", departure, "\nArrival: ", arrival)
-        time_traveled = datetime.fromisoformat(arrival) - datetime.fromisoformat(departure)
-        print("Time totally traveled: ", time_traveled)
-        if best_results:
-            self.best_solution_time = time_traveled
-            self.line_max_bags = max_bags_line
 
-    def print_part_last_nodes(self, length=10):
-        """Method prints limited number of resulted flights
-         param: length - number of resulted flights to print
-         """
-        if len(self.list_of_last_nodes) > length:
-            finish = length
-        else:
-            finish = len(self.list_of_last_nodes)
-        for i in range(finish):
-            print("Line start")
-            self.print_whole_line(self.list_of_last_nodes[i])
-            print("Line end\n")
-
-    def print_best_results(self):
-        """
-        Method prints only best results in console
-        """
-        if self.is_sorted is True:
-            best_item = self.list_of_last_nodes[0]
-            self.print_whole_line(best_item, True)
-            print("Number of bags allowed at selected line: ", self.line_max_bags)
-        else:
-            self.sort_results()
-            self.print_best_results()
-
-
-def main(argv):
+def main():
     """
     Main function
     """
-    source_file, start, final_destination, bags, return_trip, max_airports, departure_after, return_after, results_limit = process_inputs(
-        argv)
+    source_file, start, final_destination, bags, return_trip, max_airports, departure_after, return_after, results_limit = process_inputs()
     if test_file(source_file):
 
         print("File found, Searched combination:\nOrigin: {0}, Destination: {1}, Bags: {2}, Return trip: {3}, "
@@ -520,7 +387,7 @@ def main(argv):
             print("WARNING")
             print('--return_after date is valid only for return trip, this parameter is not being processed.')
 
-        if departure_after and return_after:
+        if return_trip and departure_after and return_after:
             if datetime.fromisoformat(departure_after) > datetime.fromisoformat(return_after):
                 print("WARNING")
                 print("Return after date is before departure date.")
@@ -528,67 +395,39 @@ def main(argv):
                 print("Return after date is set to None")
                 return_after = None
 
-        # start printing results
-        print("----------------------------------------\n")
-
-        new_search = FlightSearch(source_file, return_trip)
-        columns = new_search.read_first_line()
-
+        columns = read_first_line(source_file)
         # flight_table to store all data from given csv. input file
         flight_table = FlightDatabase(source_file, columns)
-
         # create table and insert data
         flight_table.create_table()
 
         # test weather origin and destination airports are present in dataset
         flight_table.search_airports(start, final_destination)
-
         flights_graph = Graph(start, final_destination, bags, flight_table, max_airports, departure_after,
                               results_limit)
 
         # create initial database search for
         table = flight_table.search_origin_airport(start)
         flights_graph.add_searched_results(flights_graph.first_node, table)
-
-        print("Number of results found:")
-        print(flights_graph.get_last_nodes_len())
         flights_graph.test_results_exist()
         flights_graph.sort_results()
-
         # print all results into json file
         flights_graph.print_results_file()
 
-        print("Best results for selected conditions: \n")
-        flights_graph.print_best_results()
-
-        print("\nAll results are in flight_search_{0}_{1}.csv file".format(flights_graph.origin,
-                                                                           flights_graph.destination))
-
-        if new_search.return_trip is True:
-            print("\n ------------- Return trip ------------- \n")
-
+        if return_trip is True:
             # to check weather there was condition for departure after:
             return_after = departure_after if return_after is None else return_after
 
             # Graph for return trip
             graph_return = Graph(final_destination, start, bags, flight_table, max_airports, return_after,
                                  results_limit)
-
             table_return = flight_table.search_origin_airport(final_destination)
             graph_return.add_searched_results(graph_return.first_node, table_return)
-            print("Number of results found:")
-            print(graph_return.get_last_nodes_len())
             graph_return.test_results_exist()
             graph_return.sort_results()
 
             # print all results into json file
             graph_return.print_results_file()
 
-            print("Best results for selected conditions: \n")
-            graph_return.print_best_results()
-            print("\nAll results are in flight_search_{0}_{1}.csv file".format(graph_return.origin,
-                                                                               graph_return.destination))
-
-
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()

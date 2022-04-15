@@ -1,0 +1,2172 @@
+[
+    {
+        "flights": [
+            {
+                "flight_no": "CC612",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-02T09:40:00",
+                "arrival": "2021-09-02T12:15:00",
+                "base_price": 30.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 39.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC612",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-04T09:40:00",
+                "arrival": "2021-09-04T12:15:00",
+                "base_price": 30.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 39.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC612",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-07T09:40:00",
+                "arrival": "2021-09-07T12:15:00",
+                "base_price": 30.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 39.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC612",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-12T09:40:00",
+                "arrival": "2021-09-12T12:15:00",
+                "base_price": 30.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 39.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC612",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-18T09:40:00",
+                "arrival": "2021-09-18T12:15:00",
+                "base_price": 30.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 39.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL471",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-02T04:55:00",
+                "arrival": "2021-09-02T07:30:00",
+                "base_price": 31.0,
+                "bag_price": 10.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 41.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL471",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-05T04:55:00",
+                "arrival": "2021-09-05T07:30:00",
+                "base_price": 31.0,
+                "bag_price": 10.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 41.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL471",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-09T04:55:00",
+                "arrival": "2021-09-09T07:30:00",
+                "base_price": 31.0,
+                "bag_price": 10.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 41.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL471",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-15T04:55:00",
+                "arrival": "2021-09-15T07:30:00",
+                "base_price": 31.0,
+                "bag_price": 10.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 41.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT448",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-02T17:20:00",
+                "arrival": "2021-09-02T19:55:00",
+                "base_price": 47.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 58.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT448",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-04T17:20:00",
+                "arrival": "2021-09-04T19:55:00",
+                "base_price": 47.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 58.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT448",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-07T17:20:00",
+                "arrival": "2021-09-07T19:55:00",
+                "base_price": 47.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 58.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT448",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-12T17:20:00",
+                "arrival": "2021-09-12T19:55:00",
+                "base_price": 47.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 58.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT448",
+                "origin": "JBN",
+                "destination": "EZO",
+                "departure": "2021-09-18T17:20:00",
+                "arrival": "2021-09-18T19:55:00",
+                "base_price": 47.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 58.0,
+        "travel_time": "2:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC753",
+                "origin": "JBN",
+                "destination": "NNB",
+                "departure": "2021-09-02T20:15:00",
+                "arrival": "2021-09-02T22:20:00",
+                "base_price": 53.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL225",
+                "origin": "NNB",
+                "destination": "EZO",
+                "departure": "2021-09-03T02:35:00",
+                "arrival": "2021-09-03T05:25:00",
+                "base_price": 66.0,
+                "bag_price": 10.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 138.0,
+        "travel_time": "9:10:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT178",
+                "origin": "JBN",
+                "destination": "VVH",
+                "departure": "2021-09-08T00:05:00",
+                "arrival": "2021-09-08T01:55:00",
+                "base_price": 30.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "YL319",
+                "origin": "VVH",
+                "destination": "EZO",
+                "departure": "2021-09-08T06:55:00",
+                "arrival": "2021-09-08T11:00:00",
+                "base_price": 117.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 168.0,
+        "travel_time": "10:55:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL596",
+                "origin": "JBN",
+                "destination": "NNB",
+                "departure": "2021-09-02T12:40:00",
+                "arrival": "2021-09-02T14:45:00",
+                "base_price": 16.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC561",
+                "origin": "NNB",
+                "destination": "WUE",
+                "departure": "2021-09-02T19:15:00",
+                "arrival": "2021-09-02T22:30:00",
+                "base_price": 84.0,
+                "bag_price": 9.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "CC156",
+                "origin": "WUE",
+                "destination": "EZO",
+                "departure": "2021-09-03T03:30:00",
+                "arrival": "2021-09-03T06:45:00",
+                "base_price": 64.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 192.0,
+        "travel_time": "18:05:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL278",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-02T04:15:00",
+                "arrival": "2021-09-02T08:30:00",
+                "base_price": 124.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL193",
+                "origin": "BPZ",
+                "destination": "EZO",
+                "departure": "2021-09-02T14:05:00",
+                "arrival": "2021-09-02T17:35:00",
+                "base_price": 114.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 258.0,
+        "travel_time": "13:20:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT688",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-02T05:10:00",
+                "arrival": "2021-09-02T09:25:00",
+                "base_price": 144.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL193",
+                "origin": "BPZ",
+                "destination": "EZO",
+                "departure": "2021-09-02T14:05:00",
+                "arrival": "2021-09-02T17:35:00",
+                "base_price": 114.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 279.0,
+        "travel_time": "12:25:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC131",
+                "origin": "JBN",
+                "destination": "WTN",
+                "departure": "2021-09-02T08:20:00",
+                "arrival": "2021-09-02T13:00:00",
+                "base_price": 176.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC451",
+                "origin": "WTN",
+                "destination": "EZO",
+                "departure": "2021-09-02T16:25:00",
+                "arrival": "2021-09-02T20:00:00",
+                "base_price": 95.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 289.0,
+        "travel_time": "11:40:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC131",
+                "origin": "JBN",
+                "destination": "WTN",
+                "departure": "2021-09-05T08:20:00",
+                "arrival": "2021-09-05T13:00:00",
+                "base_price": 176.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC451",
+                "origin": "WTN",
+                "destination": "EZO",
+                "departure": "2021-09-05T16:25:00",
+                "arrival": "2021-09-05T20:00:00",
+                "base_price": 95.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 289.0,
+        "travel_time": "11:40:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC753",
+                "origin": "JBN",
+                "destination": "NNB",
+                "departure": "2021-09-02T20:15:00",
+                "arrival": "2021-09-02T22:20:00",
+                "base_price": 53.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT457",
+                "origin": "NNB",
+                "destination": "ZRW",
+                "departure": "2021-09-03T00:30:00",
+                "arrival": "2021-09-03T03:30:00",
+                "base_price": 77.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL690",
+                "origin": "ZRW",
+                "destination": "BPZ",
+                "departure": "2021-09-03T06:40:00",
+                "arrival": "2021-09-03T09:50:00",
+                "base_price": 73.0,
+                "bag_price": 10.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "JT547",
+                "origin": "BPZ",
+                "destination": "EZO",
+                "departure": "2021-09-03T12:25:00",
+                "arrival": "2021-09-03T15:55:00",
+                "base_price": 92.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 336.0,
+        "travel_time": "19:40:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL596",
+                "origin": "JBN",
+                "destination": "NNB",
+                "departure": "2021-09-02T12:40:00",
+                "arrival": "2021-09-02T14:45:00",
+                "base_price": 16.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL366",
+                "origin": "NNB",
+                "destination": "ZRW",
+                "departure": "2021-09-02T16:10:00",
+                "arrival": "2021-09-02T19:10:00",
+                "base_price": 47.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL576",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-02T21:00:00",
+                "arrival": "2021-09-03T02:40:00",
+                "base_price": 310.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 403.0,
+        "travel_time": "14:00:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC131",
+                "origin": "JBN",
+                "destination": "WTN",
+                "departure": "2021-09-02T08:20:00",
+                "arrival": "2021-09-02T13:00:00",
+                "base_price": 176.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT467",
+                "origin": "WTN",
+                "destination": "NNB",
+                "departure": "2021-09-02T14:05:00",
+                "arrival": "2021-09-02T16:55:00",
+                "base_price": 45.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "CC561",
+                "origin": "NNB",
+                "destination": "WUE",
+                "departure": "2021-09-02T19:15:00",
+                "arrival": "2021-09-02T22:30:00",
+                "base_price": 84.0,
+                "bag_price": 9.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "CC156",
+                "origin": "WUE",
+                "destination": "EZO",
+                "departure": "2021-09-03T03:30:00",
+                "arrival": "2021-09-03T06:45:00",
+                "base_price": 64.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 407.0,
+        "travel_time": "22:25:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL596",
+                "origin": "JBN",
+                "destination": "NNB",
+                "departure": "2021-09-02T12:40:00",
+                "arrival": "2021-09-02T14:45:00",
+                "base_price": 16.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL366",
+                "origin": "NNB",
+                "destination": "ZRW",
+                "departure": "2021-09-02T16:10:00",
+                "arrival": "2021-09-02T19:10:00",
+                "base_price": 47.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC211",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-03T00:00:00",
+                "arrival": "2021-09-03T05:40:00",
+                "base_price": 325.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 417.0,
+        "travel_time": "17:00:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT459",
+                "origin": "JBN",
+                "destination": "NNB",
+                "departure": "2021-09-02T11:05:00",
+                "arrival": "2021-09-02T13:10:00",
+                "base_price": 33.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "YL366",
+                "origin": "NNB",
+                "destination": "ZRW",
+                "departure": "2021-09-02T16:10:00",
+                "arrival": "2021-09-02T19:10:00",
+                "base_price": 47.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL576",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-02T21:00:00",
+                "arrival": "2021-09-03T02:40:00",
+                "base_price": 310.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 421.0,
+        "travel_time": "15:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT704",
+                "origin": "JBN",
+                "destination": "ZRW",
+                "departure": "2021-09-02T01:45:00",
+                "arrival": "2021-09-02T06:35:00",
+                "base_price": 198.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC366",
+                "origin": "ZRW",
+                "destination": "NNB",
+                "departure": "2021-09-02T11:25:00",
+                "arrival": "2021-09-02T14:25:00",
+                "base_price": 42.0,
+                "bag_price": 9.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "CC561",
+                "origin": "NNB",
+                "destination": "WUE",
+                "departure": "2021-09-02T19:15:00",
+                "arrival": "2021-09-02T22:30:00",
+                "base_price": 84.0,
+                "bag_price": 9.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "CC156",
+                "origin": "WUE",
+                "destination": "EZO",
+                "departure": "2021-09-03T03:30:00",
+                "arrival": "2021-09-03T06:45:00",
+                "base_price": 64.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 426.0,
+        "travel_time": "1 day, 5:00:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL596",
+                "origin": "JBN",
+                "destination": "NNB",
+                "departure": "2021-09-02T12:40:00",
+                "arrival": "2021-09-02T14:45:00",
+                "base_price": 16.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL366",
+                "origin": "NNB",
+                "destination": "ZRW",
+                "departure": "2021-09-02T16:10:00",
+                "arrival": "2021-09-02T19:10:00",
+                "base_price": 47.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT104",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-02T23:45:00",
+                "arrival": "2021-09-03T05:25:00",
+                "base_price": 333.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 427.0,
+        "travel_time": "16:45:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT459",
+                "origin": "JBN",
+                "destination": "NNB",
+                "departure": "2021-09-02T11:05:00",
+                "arrival": "2021-09-02T13:10:00",
+                "base_price": 33.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "YL366",
+                "origin": "NNB",
+                "destination": "ZRW",
+                "departure": "2021-09-02T16:10:00",
+                "arrival": "2021-09-02T19:10:00",
+                "base_price": 47.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC211",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-03T00:00:00",
+                "arrival": "2021-09-03T05:40:00",
+                "base_price": 325.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 435.0,
+        "travel_time": "18:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT704",
+                "origin": "JBN",
+                "destination": "ZRW",
+                "departure": "2021-09-02T01:45:00",
+                "arrival": "2021-09-02T06:35:00",
+                "base_price": 198.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL336",
+                "origin": "ZRW",
+                "destination": "WTN",
+                "departure": "2021-09-02T08:55:00",
+                "arrival": "2021-09-02T12:35:00",
+                "base_price": 115.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC451",
+                "origin": "WTN",
+                "destination": "EZO",
+                "departure": "2021-09-02T16:25:00",
+                "arrival": "2021-09-02T20:00:00",
+                "base_price": 95.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 438.0,
+        "travel_time": "18:15:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL492",
+                "origin": "JBN",
+                "destination": "ZRW",
+                "departure": "2021-09-03T12:35:00",
+                "arrival": "2021-09-03T17:25:00",
+                "base_price": 203.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT618",
+                "origin": "ZRW",
+                "destination": "VVH",
+                "departure": "2021-09-03T22:10:00",
+                "arrival": "2021-09-04T01:40:00",
+                "base_price": 90.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL319",
+                "origin": "VVH",
+                "destination": "EZO",
+                "departure": "2021-09-04T06:55:00",
+                "arrival": "2021-09-04T11:00:00",
+                "base_price": 117.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 441.0,
+        "travel_time": "22:25:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL492",
+                "origin": "JBN",
+                "destination": "ZRW",
+                "departure": "2021-09-07T12:35:00",
+                "arrival": "2021-09-07T17:25:00",
+                "base_price": 203.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT618",
+                "origin": "ZRW",
+                "destination": "VVH",
+                "departure": "2021-09-07T22:10:00",
+                "arrival": "2021-09-08T01:40:00",
+                "base_price": 90.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL319",
+                "origin": "VVH",
+                "destination": "EZO",
+                "departure": "2021-09-08T06:55:00",
+                "arrival": "2021-09-08T11:00:00",
+                "base_price": 117.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 441.0,
+        "travel_time": "22:25:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT459",
+                "origin": "JBN",
+                "destination": "NNB",
+                "departure": "2021-09-02T11:05:00",
+                "arrival": "2021-09-02T13:10:00",
+                "base_price": 33.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "YL366",
+                "origin": "NNB",
+                "destination": "ZRW",
+                "departure": "2021-09-02T16:10:00",
+                "arrival": "2021-09-02T19:10:00",
+                "base_price": 47.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT104",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-02T23:45:00",
+                "arrival": "2021-09-03T05:25:00",
+                "base_price": 333.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 445.0,
+        "travel_time": "18:20:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL278",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-02T04:15:00",
+                "arrival": "2021-09-02T08:30:00",
+                "base_price": 124.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT107",
+                "origin": "BPZ",
+                "destination": "VVH",
+                "departure": "2021-09-02T10:55:00",
+                "arrival": "2021-09-02T15:10:00",
+                "base_price": 156.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT626",
+                "origin": "VVH",
+                "destination": "WUE",
+                "departure": "2021-09-02T20:40:00",
+                "arrival": "2021-09-02T23:20:00",
+                "base_price": 67.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "CC156",
+                "origin": "WUE",
+                "destination": "EZO",
+                "departure": "2021-09-03T03:30:00",
+                "arrival": "2021-09-03T06:45:00",
+                "base_price": 64.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 452.0,
+        "travel_time": "1 day, 2:30:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT688",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-02T05:10:00",
+                "arrival": "2021-09-02T09:25:00",
+                "base_price": 144.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT107",
+                "origin": "BPZ",
+                "destination": "VVH",
+                "departure": "2021-09-02T10:55:00",
+                "arrival": "2021-09-02T15:10:00",
+                "base_price": 156.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT626",
+                "origin": "VVH",
+                "destination": "WUE",
+                "departure": "2021-09-02T20:40:00",
+                "arrival": "2021-09-02T23:20:00",
+                "base_price": 67.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "CC156",
+                "origin": "WUE",
+                "destination": "EZO",
+                "departure": "2021-09-03T03:30:00",
+                "arrival": "2021-09-03T06:45:00",
+                "base_price": 64.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 473.0,
+        "travel_time": "1 day, 1:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL492",
+                "origin": "JBN",
+                "destination": "ZRW",
+                "departure": "2021-09-07T12:35:00",
+                "arrival": "2021-09-07T17:25:00",
+                "base_price": 203.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL576",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-07T21:00:00",
+                "arrival": "2021-09-08T02:40:00",
+                "base_price": 310.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 533.0,
+        "travel_time": "14:05:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL492",
+                "origin": "JBN",
+                "destination": "ZRW",
+                "departure": "2021-09-12T12:35:00",
+                "arrival": "2021-09-12T17:25:00",
+                "base_price": 203.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL576",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-12T21:00:00",
+                "arrival": "2021-09-13T02:40:00",
+                "base_price": 310.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 533.0,
+        "travel_time": "14:05:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC463",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-04T09:40:00",
+                "arrival": "2021-09-04T13:55:00",
+                "base_price": 126.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT409",
+                "origin": "BPZ",
+                "destination": "WUE",
+                "departure": "2021-09-04T15:50:00",
+                "arrival": "2021-09-04T21:20:00",
+                "base_price": 304.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT755",
+                "origin": "WUE",
+                "destination": "EZO",
+                "departure": "2021-09-05T02:55:00",
+                "arrival": "2021-09-05T06:10:00",
+                "base_price": 76.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 537.0,
+        "travel_time": "20:30:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC143",
+                "origin": "JBN",
+                "destination": "ZRW",
+                "departure": "2021-09-02T16:35:00",
+                "arrival": "2021-09-02T21:25:00",
+                "base_price": 211.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC211",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-03T00:00:00",
+                "arrival": "2021-09-03T05:40:00",
+                "base_price": 325.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 554.0,
+        "travel_time": "13:05:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT704",
+                "origin": "JBN",
+                "destination": "ZRW",
+                "departure": "2021-09-02T01:45:00",
+                "arrival": "2021-09-02T06:35:00",
+                "base_price": 198.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL336",
+                "origin": "ZRW",
+                "destination": "WTN",
+                "departure": "2021-09-02T08:55:00",
+                "arrival": "2021-09-02T12:35:00",
+                "base_price": 115.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT467",
+                "origin": "WTN",
+                "destination": "NNB",
+                "departure": "2021-09-02T14:05:00",
+                "arrival": "2021-09-02T16:55:00",
+                "base_price": 45.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "CC561",
+                "origin": "NNB",
+                "destination": "WUE",
+                "departure": "2021-09-02T19:15:00",
+                "arrival": "2021-09-02T22:30:00",
+                "base_price": 84.0,
+                "bag_price": 9.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "CC156",
+                "origin": "WUE",
+                "destination": "EZO",
+                "departure": "2021-09-03T03:30:00",
+                "arrival": "2021-09-03T06:45:00",
+                "base_price": 64.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 556.0,
+        "travel_time": "1 day, 5:00:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC143",
+                "origin": "JBN",
+                "destination": "ZRW",
+                "departure": "2021-09-02T16:35:00",
+                "arrival": "2021-09-02T21:25:00",
+                "base_price": 211.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT104",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-02T23:45:00",
+                "arrival": "2021-09-03T05:25:00",
+                "base_price": 333.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 564.0,
+        "travel_time": "12:50:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL320",
+                "origin": "JBN",
+                "destination": "WUE",
+                "departure": "2021-09-02T16:30:00",
+                "arrival": "2021-09-02T17:40:00",
+                "base_price": 2.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL643",
+                "origin": "WUE",
+                "destination": "ZRW",
+                "departure": "2021-09-02T21:55:00",
+                "arrival": "2021-09-03T03:55:00",
+                "base_price": 366.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL690",
+                "origin": "ZRW",
+                "destination": "BPZ",
+                "departure": "2021-09-03T06:40:00",
+                "arrival": "2021-09-03T09:50:00",
+                "base_price": 73.0,
+                "bag_price": 10.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "JT547",
+                "origin": "BPZ",
+                "destination": "EZO",
+                "departure": "2021-09-03T12:25:00",
+                "arrival": "2021-09-03T15:55:00",
+                "base_price": 92.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 574.0,
+        "travel_time": "23:25:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT323",
+                "origin": "JBN",
+                "destination": "WTN",
+                "departure": "2021-09-12T09:30:00",
+                "arrival": "2021-09-12T14:10:00",
+                "base_price": 185.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC311",
+                "origin": "WTN",
+                "destination": "WUE",
+                "departure": "2021-09-12T20:05:00",
+                "arrival": "2021-09-13T01:50:00",
+                "base_price": 327.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC156",
+                "origin": "WUE",
+                "destination": "EZO",
+                "departure": "2021-09-13T03:30:00",
+                "arrival": "2021-09-13T06:45:00",
+                "base_price": 64.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 605.0,
+        "travel_time": "21:15:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL774",
+                "origin": "JBN",
+                "destination": "VVH",
+                "departure": "2021-09-02T22:55:00",
+                "arrival": "2021-09-03T00:45:00",
+                "base_price": 13.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL826",
+                "origin": "VVH",
+                "destination": "ZRW",
+                "departure": "2021-09-03T04:20:00",
+                "arrival": "2021-09-03T07:50:00",
+                "base_price": 100.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL643",
+                "origin": "ZRW",
+                "destination": "WUE",
+                "departure": "2021-09-03T09:55:00",
+                "arrival": "2021-09-03T15:55:00",
+                "base_price": 366.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL839",
+                "origin": "WUE",
+                "destination": "EZO",
+                "departure": "2021-09-03T21:25:00",
+                "arrival": "2021-09-04T00:40:00",
+                "base_price": 91.0,
+                "bag_price": 10.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 610.0,
+        "travel_time": "1 day, 1:45:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC131",
+                "origin": "JBN",
+                "destination": "WTN",
+                "departure": "2021-09-02T08:20:00",
+                "arrival": "2021-09-02T13:00:00",
+                "base_price": 176.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC742",
+                "origin": "WTN",
+                "destination": "ZRW",
+                "departure": "2021-09-02T16:35:00",
+                "arrival": "2021-09-02T20:15:00",
+                "base_price": 95.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC211",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-03T00:00:00",
+                "arrival": "2021-09-03T05:40:00",
+                "base_price": 325.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 623.0,
+        "travel_time": "21:20:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT178",
+                "origin": "JBN",
+                "destination": "VVH",
+                "departure": "2021-09-03T00:05:00",
+                "arrival": "2021-09-03T01:55:00",
+                "base_price": 30.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "YL826",
+                "origin": "VVH",
+                "destination": "ZRW",
+                "departure": "2021-09-03T04:20:00",
+                "arrival": "2021-09-03T07:50:00",
+                "base_price": 100.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL643",
+                "origin": "ZRW",
+                "destination": "WUE",
+                "departure": "2021-09-03T09:55:00",
+                "arrival": "2021-09-03T15:55:00",
+                "base_price": 366.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL839",
+                "origin": "WUE",
+                "destination": "EZO",
+                "departure": "2021-09-03T21:25:00",
+                "arrival": "2021-09-04T00:40:00",
+                "base_price": 91.0,
+                "bag_price": 10.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 628.0,
+        "travel_time": "1 day, 0:35:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC131",
+                "origin": "JBN",
+                "destination": "WTN",
+                "departure": "2021-09-02T08:20:00",
+                "arrival": "2021-09-02T13:00:00",
+                "base_price": 176.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC742",
+                "origin": "WTN",
+                "destination": "ZRW",
+                "departure": "2021-09-02T16:35:00",
+                "arrival": "2021-09-02T20:15:00",
+                "base_price": 95.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT104",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-02T23:45:00",
+                "arrival": "2021-09-03T05:25:00",
+                "base_price": 333.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 633.0,
+        "travel_time": "21:05:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC131",
+                "origin": "JBN",
+                "destination": "WTN",
+                "departure": "2021-09-02T08:20:00",
+                "arrival": "2021-09-02T13:00:00",
+                "base_price": 176.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL336",
+                "origin": "WTN",
+                "destination": "ZRW",
+                "departure": "2021-09-02T17:35:00",
+                "arrival": "2021-09-02T21:15:00",
+                "base_price": 115.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC211",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-03T00:00:00",
+                "arrival": "2021-09-03T05:40:00",
+                "base_price": 325.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 644.0,
+        "travel_time": "21:20:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC131",
+                "origin": "JBN",
+                "destination": "WTN",
+                "departure": "2021-09-02T08:20:00",
+                "arrival": "2021-09-02T13:00:00",
+                "base_price": 176.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL336",
+                "origin": "WTN",
+                "destination": "ZRW",
+                "departure": "2021-09-02T17:35:00",
+                "arrival": "2021-09-02T21:15:00",
+                "base_price": 115.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT104",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-02T23:45:00",
+                "arrival": "2021-09-03T05:25:00",
+                "base_price": 333.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 654.0,
+        "travel_time": "21:05:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "CC463",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-04T09:40:00",
+                "arrival": "2021-09-04T13:55:00",
+                "base_price": 126.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT409",
+                "origin": "BPZ",
+                "destination": "WUE",
+                "departure": "2021-09-04T15:50:00",
+                "arrival": "2021-09-04T21:20:00",
+                "base_price": 304.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT465",
+                "origin": "WUE",
+                "destination": "NNB",
+                "departure": "2021-09-05T00:15:00",
+                "arrival": "2021-09-05T03:30:00",
+                "base_price": 71.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "JT467",
+                "origin": "NNB",
+                "destination": "WTN",
+                "departure": "2021-09-05T08:15:00",
+                "arrival": "2021-09-05T11:05:00",
+                "base_price": 45.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "CC451",
+                "origin": "WTN",
+                "destination": "EZO",
+                "departure": "2021-09-05T16:25:00",
+                "arrival": "2021-09-05T20:00:00",
+                "base_price": 95.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 692.0,
+        "travel_time": "1 day, 10:20:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL278",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-02T04:15:00",
+                "arrival": "2021-09-02T08:30:00",
+                "base_price": 124.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL311",
+                "origin": "BPZ",
+                "destination": "VVH",
+                "departure": "2021-09-02T10:15:00",
+                "arrival": "2021-09-02T14:30:00",
+                "base_price": 147.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC563",
+                "origin": "VVH",
+                "destination": "ZRW",
+                "departure": "2021-09-02T19:00:00",
+                "arrival": "2021-09-02T22:30:00",
+                "base_price": 77.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC211",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-03T00:00:00",
+                "arrival": "2021-09-03T05:40:00",
+                "base_price": 325.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 711.0,
+        "travel_time": "1 day, 1:25:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL278",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-02T04:15:00",
+                "arrival": "2021-09-02T08:30:00",
+                "base_price": 124.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL311",
+                "origin": "BPZ",
+                "destination": "VVH",
+                "departure": "2021-09-02T10:15:00",
+                "arrival": "2021-09-02T14:30:00",
+                "base_price": 147.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC563",
+                "origin": "VVH",
+                "destination": "ZRW",
+                "departure": "2021-09-02T19:00:00",
+                "arrival": "2021-09-02T22:30:00",
+                "base_price": 77.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT104",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-02T23:45:00",
+                "arrival": "2021-09-03T05:25:00",
+                "base_price": 333.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 721.0,
+        "travel_time": "1 day, 1:10:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL278",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-02T04:15:00",
+                "arrival": "2021-09-02T08:30:00",
+                "base_price": 124.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT107",
+                "origin": "BPZ",
+                "destination": "VVH",
+                "departure": "2021-09-02T10:55:00",
+                "arrival": "2021-09-02T15:10:00",
+                "base_price": 156.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC563",
+                "origin": "VVH",
+                "destination": "ZRW",
+                "departure": "2021-09-02T19:00:00",
+                "arrival": "2021-09-02T22:30:00",
+                "base_price": 77.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC211",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-03T00:00:00",
+                "arrival": "2021-09-03T05:40:00",
+                "base_price": 325.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 721.0,
+        "travel_time": "1 day, 1:25:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "YL278",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-02T04:15:00",
+                "arrival": "2021-09-02T08:30:00",
+                "base_price": 124.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT107",
+                "origin": "BPZ",
+                "destination": "VVH",
+                "departure": "2021-09-02T10:55:00",
+                "arrival": "2021-09-02T15:10:00",
+                "base_price": 156.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC563",
+                "origin": "VVH",
+                "destination": "ZRW",
+                "departure": "2021-09-02T19:00:00",
+                "arrival": "2021-09-02T22:30:00",
+                "base_price": 77.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT104",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-02T23:45:00",
+                "arrival": "2021-09-03T05:25:00",
+                "base_price": 333.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 731.0,
+        "travel_time": "1 day, 1:10:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT688",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-02T05:10:00",
+                "arrival": "2021-09-02T09:25:00",
+                "base_price": 144.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT107",
+                "origin": "BPZ",
+                "destination": "VVH",
+                "departure": "2021-09-02T10:55:00",
+                "arrival": "2021-09-02T15:10:00",
+                "base_price": 156.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC563",
+                "origin": "VVH",
+                "destination": "ZRW",
+                "departure": "2021-09-02T19:00:00",
+                "arrival": "2021-09-02T22:30:00",
+                "base_price": 77.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC211",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-03T00:00:00",
+                "arrival": "2021-09-03T05:40:00",
+                "base_price": 325.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 742.0,
+        "travel_time": "1 day, 0:30:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT688",
+                "origin": "JBN",
+                "destination": "BPZ",
+                "departure": "2021-09-02T05:10:00",
+                "arrival": "2021-09-02T09:25:00",
+                "base_price": 144.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT107",
+                "origin": "BPZ",
+                "destination": "VVH",
+                "departure": "2021-09-02T10:55:00",
+                "arrival": "2021-09-02T15:10:00",
+                "base_price": 156.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC563",
+                "origin": "VVH",
+                "destination": "ZRW",
+                "departure": "2021-09-02T19:00:00",
+                "arrival": "2021-09-02T22:30:00",
+                "base_price": 77.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "JT104",
+                "origin": "ZRW",
+                "destination": "EZO",
+                "departure": "2021-09-02T23:45:00",
+                "arrival": "2021-09-03T05:25:00",
+                "base_price": 333.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 752.0,
+        "travel_time": "1 day, 0:15:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT323",
+                "origin": "JBN",
+                "destination": "WTN",
+                "departure": "2021-09-12T09:30:00",
+                "arrival": "2021-09-12T14:10:00",
+                "base_price": 185.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC311",
+                "origin": "WTN",
+                "destination": "WUE",
+                "departure": "2021-09-12T20:05:00",
+                "arrival": "2021-09-13T01:50:00",
+                "base_price": 327.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC535",
+                "origin": "WUE",
+                "destination": "ZRW",
+                "departure": "2021-09-13T04:45:00",
+                "arrival": "2021-09-13T10:45:00",
+                "base_price": 350.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL826",
+                "origin": "ZRW",
+                "destination": "VVH",
+                "departure": "2021-09-13T11:50:00",
+                "arrival": "2021-09-13T15:20:00",
+                "base_price": 100.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC675",
+                "origin": "VVH",
+                "destination": "NNB",
+                "departure": "2021-09-13T18:00:00",
+                "arrival": "2021-09-13T19:50:00",
+                "base_price": 15.0,
+                "bag_price": 9.0,
+                "bags_allowed": 1
+            },
+            {
+                "flight_no": "JT510",
+                "origin": "NNB",
+                "destination": "EZO",
+                "departure": "2021-09-13T23:40:00",
+                "arrival": "2021-09-14T02:30:00",
+                "base_price": 61.0,
+                "bag_price": 11.0,
+                "bags_allowed": 1
+            }
+        ],
+        "bags_allowed": 1,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 1097.0,
+        "travel_time": "1 day, 17:00:00"
+    },
+    {
+        "flights": [
+            {
+                "flight_no": "JT323",
+                "origin": "JBN",
+                "destination": "WTN",
+                "departure": "2021-09-12T09:30:00",
+                "arrival": "2021-09-12T14:10:00",
+                "base_price": 185.0,
+                "bag_price": 11.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC311",
+                "origin": "WTN",
+                "destination": "WUE",
+                "departure": "2021-09-12T20:05:00",
+                "arrival": "2021-09-13T01:50:00",
+                "base_price": 327.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC535",
+                "origin": "WUE",
+                "destination": "ZRW",
+                "departure": "2021-09-13T04:45:00",
+                "arrival": "2021-09-13T10:45:00",
+                "base_price": 350.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "YL826",
+                "origin": "ZRW",
+                "destination": "VVH",
+                "departure": "2021-09-13T11:50:00",
+                "arrival": "2021-09-13T15:20:00",
+                "base_price": 100.0,
+                "bag_price": 10.0,
+                "bags_allowed": 2
+            },
+            {
+                "flight_no": "CC100",
+                "origin": "VVH",
+                "destination": "EZO",
+                "departure": "2021-09-13T19:10:00",
+                "arrival": "2021-09-13T23:15:00",
+                "base_price": 136.0,
+                "bag_price": 9.0,
+                "bags_allowed": 2
+            }
+        ],
+        "bags_allowed": 2,
+        "bags_count": 1,
+        "destination": "EZO",
+        "origin": "JBN",
+        "total_price": 1146.0,
+        "travel_time": "1 day, 13:45:00"
+    }
+]

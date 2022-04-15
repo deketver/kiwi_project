@@ -9,11 +9,9 @@ import os.path
 import json
 
 
-
 def process_inputs(argv):
     """Function to read inputs from command line
     arguments: argv - list of input information provided by user"""
-
 
     regex_airport = r"^[A-Z]{3}$"
     regex_bags = r"bags="
@@ -144,7 +142,6 @@ class FlightDatabase:
         self.cursor = self.connection.cursor()
         self.cursor.execute("Create table flight_data (" + self.columns + ");")
         first_row = 0
-        print("Jsem v create table")
         with open(self.source_file, 'r+') as file:
             for line in file:
                 if first_row > 0:
